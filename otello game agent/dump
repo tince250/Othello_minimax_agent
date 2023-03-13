@@ -1,0 +1,16 @@
+
+                if self._board[i][j] == current_player:
+                    for item in all_directions.values():
+                        ni = i + item[0]
+                        nj = j + item[1]
+                        if not self.is_outside_board(ni, nj):
+                            if self._board[ni][nj] == self.oposite_player(current_player):
+                                while True:
+                                    if not self.is_outside_board(ni + item[0], nj + item[1]) and self._board[ni + item[0]][
+                                        nj + item[1]] == '-':
+                                        available_moves.append((ni + item[0], nj + item[1]))
+                                        break
+                                    if self.is_outside_board(ni, nj):
+                                        break
+                                    ni = ni + item[0]
+                                    nj = nj + item[1]
