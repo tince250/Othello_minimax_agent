@@ -26,13 +26,13 @@ The project contains custom implementations of later used data structures:
 
 Functions for fetching and playing legal moves for the said state are also implemented here.
 
-``game_without_hash.py`` - First variant of the main project file. It contains implementation of the min and max functions for plating min/max player's moves, as well as the heuristic function used for evaluating each state. Current version is AI vs AI, but it can easily be switched so that the second player is human (the human player code is commented out).
+``game_without_hash.py`` - First variant of the core project file. It contains implementation of the min and max functions for plating min/max player's moves, as well as the heuristic function used for evaluating each state. Current version is AI vs AI, but it can easily be switched so that the second player is human (the human player code is commented out).
 
-``game.py`` - Second variant of the main project file. It's the same as game_without_hash.py, with the only difference being the added hashmap optimization - before evaluating a state, we check if the state has already been evaluated in some of the previous simulations - if so, no need to eval again, if not, we evaluate it and save it in the hashmap for future use.
+``game.py`` - Second variant of the core project file. It's the same as game_without_hash.py, with the only difference being the added hashmap optimization - before evaluating a state, we check if the state has already been evaluated in some of the previous simulations - if so, no need to eval again, if not, we evaluate it and save it in the hashmap for future use.
 
 ## Running the code
 Aside from the ``time`` lib used for calculating the speed with wich AI decides on its move and ``random`` used for the HashMap implementation, no external libraries were used. <br />
-Simply run the ``game.py`` or ``game_without_hash.py`` to get the console app going 😃
+Simply run the ``main.py`` to get the console app going 😃
 <br />
 <br />
 
