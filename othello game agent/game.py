@@ -338,7 +338,7 @@ class Game(object):
                         available_moves = self._current_state.available_moves("B")
                         if len(available_moves) != 0:
                             self._current_state.print_board(self._current_state.available_moves_board(available_moves))
-                            print("\033[94mPredlozi legalnih poteza: \033[0m", end="")
+                            print("\033[94mSuggested legal moves (blue on board): \033[0m", end="")
                             print(available_moves)
 
                             try:
@@ -384,7 +384,7 @@ class Game(object):
                     #     available_moves = self._current_state.available_moves("W")
                     #     if len(available_moves) != 0:
                     #         self._current_state.print_board(self._current_state.available_moves_board(available_moves))
-                    #         print("Predlozi legalnih poteza: ", end="")
+                    #         print("\033[94mSuggested legal moves (blue on board): \033[0m", end="")
                     #         print(available_moves)
                     #
                     #         px = int(input("Enter the x coordinate: "))
