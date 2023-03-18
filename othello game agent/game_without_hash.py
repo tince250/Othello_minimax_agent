@@ -25,7 +25,7 @@ class Game(object):
         self._player_turn = "B"
 
     def heuristic(self, player, state, end):
-        #implementirana heuristika sa linka
+        #implementirana heuristic from internet research
         my_tiles = opp_tiles = my_front_tiles = opp_front_tiles = 0
         p = c = l1 = m = f = d = 0
         my_color = "W"
@@ -178,10 +178,6 @@ class Game(object):
 
         end, winner = self._current_state.is_end()
 
-        # current_time = time.time()
-        # if current_time - start_time >= 2.7:
-        #     end = True
-
         if end or depth == 1:
             score = self.heuristic("W", self._current_state, end)
             return score, 0, 0
@@ -191,10 +187,6 @@ class Game(object):
             for move in legal_moves:
                 state_copy = self._current_state.copy_state()
                 self._current_state.set_value(move[0], move[1], "W")
-                # if self._current_state in self._states_map:
-                #     opp_value = self._states_map[self._current_state]
-                #     print("\033[96mISKORISTIO HASH\033[0m")
-                # else:
                 if self._current_state.has_legal_moves("B"):
                     (opp_value, opp_x, opp_py) = self.min(depth - 1, start_time, alpha, beta)
                 else:
@@ -204,7 +196,6 @@ class Game(object):
                     px = move[0]
                     py = move[1]
                     maxv = opp_value
-                    print("Jeste", px, py, maxv)
                 self._current_state = state_copy
 
                 if maxv >= beta:
@@ -229,10 +220,6 @@ class Game(object):
 
         end, winner = self._current_state.is_end()
 
-        # current_time = time.time()
-        # if current_time - start_time >= 2.7:
-        #     end = True
-
         if end or depth == 1:
             score = self.heuristic("W", self._current_state, end)
             print(score)
@@ -243,10 +230,6 @@ class Game(object):
             for move in legal_moves:
                 state_copy = self._current_state.copy_state()
                 self._current_state.set_value(move[0], move[1], "B")
-                # if self._current_state in self._states_map:
-                #     opp_value = self._states_map[self._current_state]
-                #     print("\033[96mISKORISTIO HASH\033[0m")
-                # else:
                 if self._current_state.has_legal_moves("W"):
                     (opp_value, opp_x, opp_py) = self.max(depth - 1, start_time, alpha, beta)
                 else:
@@ -269,7 +252,6 @@ class Game(object):
 
     def play(self):
         while True:
-            #print(self._current_state)
             result, winner = self._current_state.is_end()
 
             if result:
@@ -299,12 +281,7 @@ class Game(object):
 
                     if score is not False:
                         self._current_state.set_value(px, py, "B")
-                        # print(score)
-                        print(self._current_state)
-                        # while True:
-                        #     x = input()
-                        #     if x == "x":
-                        #         break
+
                     self._player_turn = "W"
 
                     # while True:
@@ -316,17 +293,17 @@ class Game(object):
                     #         print("Predlozi legalnih poteza: ", end="")
                     #         print(available_moves)
                     #
-                    #         px = int(input("Unesite x koordinatu: "))   #sredi da ti ne puca kad pritisnes enter
-                    #         py = int(input("Unesite y kooridinatu: "))
+                    #         px = int(input("Enter the x coordinate: "))   #sredi da ti ne puca kad pritisnes enter
+                    #         py = int(input("Enter the y coordinate: "))
                     #
                     #         if self._current_state.is_move_valid(px, py, "B"):
                     #             self._current_state.set_value(px, py, "B")
                     #             self._player_turn = "W"
                     #             break
                     #         else:
-                    #             print("Potez nije validan, pokusajte ponovo.")
+                    #             print("Move not valid, try again.")
                     #     else:
-                    #         print("Nemate vise legalnih pokusaja, na redu je drugi igrac.")
+                    #         print("You have no legal moves left, it's other player's turn.")
                     #         self._player_turn = "W"
                     #         break
 
@@ -355,17 +332,17 @@ class Game(object):
                     #         print("Predlozi legalnih poteza: ", end="")
                     #         print(available_moves)
                     #
-                    #         px = int(input("Unesite x koordinatu: "))
-                    #         py = int(input("Unesite y kooridinatu: "))
+                    #         px = int(input("Enter the x coordinate: "))
+                    #         py = int(input("Enter the y coordinate: "))
                     #
                     #         if self._current_state.is_move_valid(px, py, "W"):
                     #             self._current_state.set_value(px, py, "W")
                     #             self._player_turn = "B"
                     #             break
                     #         else:
-                    #             print("Potez nije validan, pokusajte ponovo.")
+                    #             print("Move not valid, try again.")
                     #     else:
-                    #         print("Nemate vise legalnih pokusaja, na redu je drugi igrac.")
+                    #         print("You have no legal moves left, it's other player's turn.")
 
 
 
