@@ -2,6 +2,8 @@
 Implementation of the ``Minimax`` decision algorithm with ``Alpha-beta pruning`` optimization for Othello/Reversi, in Python, as a console application. <br />
 Both ``AI vs AI`` and ``AI vs Human`` options are available.
 
+Project done for the "Algorithms and Data Structures" course, in the second semester of my Software Engineering BA.
+
 ## About Othello
 Reversi is a strategy board game for two players, played on an 8×8 uncheckered board. Othello is a variant with a fixed initial setup of the board.<br />
 <img src="https://www.activitytailor.com/wp-content/uploads/2011/07/othello2.jpg" width="300" /> <br />
@@ -26,7 +28,7 @@ Functions for fetching and playing legal moves for the said state are also imple
 
 ``game_without_hash.py`` - First variant of the main project file. It contains implementation of the min and max functions for plating min/max player's moves, as well as the heuristic function used for evaluating each state. Current version is AI vs AI, but it can easily be switched so that the second player is human (the human player code is commented out).
 
-``game.py`` - Second variant of the main project file. It's the same as game_without_hash.py, with the only difference being the added hashmap optimization - before evaluating a state, we check if the state has already been evaluated in some of the previous simulations - if so, no need to eval again, if not, we evaluate it and sasve it in the hashmap for future use.
+``game.py`` - Second variant of the main project file. It's the same as game_without_hash.py, with the only difference being the added hashmap optimization - before evaluating a state, we check if the state has already been evaluated in some of the previous simulations - if so, no need to eval again, if not, we evaluate it and save it in the hashmap for future use.
 
 ## Running the code
 Aside from the ``time`` lib used for calculating the speed with wich AI decides on its move and ``random`` used for the HashMap implementation, no external libraries were used. <br />
