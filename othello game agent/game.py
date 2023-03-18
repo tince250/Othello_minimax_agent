@@ -169,153 +169,8 @@ class Game(object):
         # print('m : ', m)
         #final weighted score
         score = (10 * p) + (801.724 * c) + (382.026 * l1) + (78.922 * m) + (74.396 * f) + (10 * d)
-        # print(state)
-        # print(score)
-        # h = heuritistic(state, "W")
-        # h.print_score()
-        # while True:
-        #     x = input()
-        #     if x == '':
-        #         break
+
         return score
-
-    # def heuristic_test(self, state, my_tiles, opp_tiles, my_front_tiles, opp_front_tiles):
-    #     p = c = l1 = m = f = d = 0
-    #     my_front_tiles = opp_front_tiles = 0
-    #     my_color = "W"
-    #     opp_color = "B"
-    #     board = state.board
-    #
-    #     X1 = [-1, -1, 0, 1, 1, 1, 0, -1]
-    #     Y1 = [0, 1, 1, 1, 0, -1, -1, -1]
-    #     V = [[20, -3, 11, 8, 8, 11, -3, 20], [-3, -7, -4, 1, 1, -4, -7, -3], [11, -4, 2, 2, 2, 2, -4, 11],
-    #          [8, 1, 2, -3, -3, 2, 1, 8], [8, 1, 2, -3, -3, 2, 1, 8], [11, -4, 2, 2, 2, 2, -4, 11],
-    #          [-3, -7, -4, 1, 1, -4, -7, -3], [20, -3, 11, 8, 8, 11, -3, 20]]
-    #
-    #     # Piece difference, frontier disks and disk squares
-    #     for i in range(8):
-    #         for j in range(8):
-    #
-    #             if board[i][j] != '-':
-    #                 for k in range(8):
-    #                     x = i + X1[k]
-    #                     y = j + Y1[k]
-    #                     if not self._current_state.is_outside_board(x, y) and board[x][y] == '-':
-    #                         if board[i][j] == my_color:
-    #                             my_front_tiles += 1
-    #                         else:
-    #                             opp_front_tiles += 1
-    #                         break
-    #     print("broj belih:", my_front_tiles, "broj crnih:", opp_front_tiles)
-    #     if my_tiles > opp_tiles:
-    #         p = (100.0 * my_tiles) / (my_tiles + opp_tiles)
-    #     elif my_tiles < opp_tiles:
-    #         p = -(100.0 * opp_tiles) / (my_tiles + opp_tiles)
-    #     else:
-    #         p = 0
-    #     print('p : ', p)
-    #
-    #     if my_front_tiles > opp_front_tiles:
-    #         f = -(100.0 * my_front_tiles) / (my_front_tiles + opp_front_tiles)
-    #     elif my_front_tiles < opp_front_tiles:
-    #         f = (100.0 * opp_front_tiles) / (my_front_tiles + opp_front_tiles)
-    #     else:
-    #         f = 0
-    #
-    #     # Corner occupancy
-    #     my_tiles = opp_tiles = 0
-    #     if (board[0][0] == my_color):
-    #         my_tiles += 1
-    #     elif (board[0][0] == opp_color):
-    #         opp_tiles += 1
-    #     if (board[0][7] == my_color):
-    #         my_tiles += 1
-    #     elif (board[0][7] == opp_color):
-    #         opp_tiles += 1
-    #     if (board[7][0] == my_color):
-    #         my_tiles += 1
-    #     elif (board[7][0] == opp_color):
-    #         opp_tiles += 1
-    #     elif (board[7][7] == my_color):
-    #         my_tiles += 1
-    #     if (board[7][7] == opp_color):
-    #         opp_tiles += 1
-    #     c = 25 * (my_tiles - opp_tiles)
-    #
-    #     # Corner closeness
-    #     my_tiles = opp_tiles = 0
-    #     if board[0][0] == '-':
-    #         if (board[0][1] == my_color):
-    #             my_tiles += 1
-    #         if (board[0][1] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[1][0] == my_color):
-    #             my_tiles += 1
-    #         if (board[1][0] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[1][1] == my_color):
-    #             my_tiles += 1
-    #         if (board[1][1] == opp_color):
-    #             opp_tiles += 1
-    #     if board[0][7] == '-':
-    #         if (board[0][6] == my_color):
-    #             my_tiles += 1
-    #         if (board[0][6] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[1][7] == my_color):
-    #             my_tiles += 1
-    #         if (board[1][7] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[1][6] == my_color):
-    #             my_tiles += 1
-    #         if (board[1][6] == opp_color):
-    #             opp_tiles += 1
-    #     if board[7][0] == '-':
-    #         if (board[7][1] == my_color):
-    #             my_tiles += 1
-    #         if (board[7][1] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[6][0] == my_color):
-    #             my_tiles += 1
-    #         if (board[6][0] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[6][1] == my_color):
-    #             my_tiles += 1
-    #         if (board[6][1] == opp_color):
-    #             opp_tiles += 1
-    #     if board[7][7] == '-':
-    #         if (board[6][7] == my_color):
-    #             my_tiles += 1
-    #         if (board[6][7] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[6][6] == my_color):
-    #             my_tiles += 1
-    #         if (board[6][6] == opp_color):
-    #             opp_tiles += 1
-    #         if (board[7][6] == my_color):
-    #             my_tiles += 1
-    #         if (board[7][6] == opp_color):
-    #             opp_tiles += 1
-    #         l1 = -12.5 * (my_tiles - opp_tiles)
-    #
-    #     # Mobility
-    #     m = self.mobility(len(self._current_state.available_moves("W")), len(self._current_state.available_moves("B")))
-    #     print("broj belih:", len(self._current_state.available_moves("W")), "broj crnih:", len(self._current_state.available_moves("B")))
-    #
-    #     score = (10 * p) + (801.724 * c) + (382.026 * l1) + (78.922 * m) + (74.396 * f) + (10 * d)
-    #
-    #     print("test:", score)
-
-    # def mobility(self, my_tiles, opp_tiles):
-    #     my_tiles = len(self._current_state.available_moves("W"))
-    #     opp_tiles = len(self._current_state.available_moves("B"))
-    #     if my_tiles > opp_tiles:
-    #         m = (100.0 * my_tiles) / (my_tiles + opp_tiles)
-    #     elif my_tiles < opp_tiles:
-    #         m = -(100.0 * opp_tiles) / (my_tiles + opp_tiles)
-    #     else:
-    #         m = 0
-    #     return m
 
     def wait(self):
         while True:
@@ -325,8 +180,6 @@ class Game(object):
 
 
     def max(self, depth, start_time, alpha, beta, parent):
-        # print("NOVO STANJE")
-        # print(self._current_state)
         maxv = MINF-1
 
         px = None
@@ -352,17 +205,6 @@ class Game(object):
                 new_parent = self.add_tree_node(parent)
                 if self._current_state in self._states_map:
                     opp_value = self._states_map[self._current_state]
-                    # for state in self._states_map:
-                    #     if self._current_state == state:
-                    #         map_state = state
-                    # print('*'*50)
-                    # print(self._current_state)
-                    # print("MAPA:")
-                    # print(map_state)
-                    # print('*' * 50)
-                    # print("\033[96mISKORISTIO HASH\033[0m")
-                    # print(self._states_map[self._current_state])
-                    # self.wait()
                 else:
                     if self._current_state.has_legal_moves("B"):
                         (opp_value, opp_x, opp_py, p) = self.min(depth - 1, start_time, alpha, beta, new_parent)
@@ -374,7 +216,6 @@ class Game(object):
                     py = move[1]
 
                     next_parent = new_parent
-                    # print("Jeste", px, py, maxv)
                 self._current_state = state_copy
 
                 if maxv >= beta:
@@ -391,7 +232,6 @@ class Game(object):
 
 
     def min(self, depth, start_time, alpha, beta, parent):
-        # print("min\n", self._current_state)
         minv = INF+1
 
         qx = None
@@ -407,7 +247,6 @@ class Game(object):
         if end or depth == 1:
             score = self.heuristic("W", self._current_state, end)
             self._states_map[self._current_state] = score
-            # print(score)
             return score, 0, 0, 0
 
         legal_moves = self._current_state.available_moves("B")
@@ -418,7 +257,7 @@ class Game(object):
                 new_parent = self.add_tree_node(parent)
                 if self._current_state in self._states_map:
                     opp_value = self._states_map[self._current_state]
-                    print("\033[96mISKORISTIO HASH\033[0m")
+                    print("\033[96mHASH USED\033[0m")
                 else:
                     if self._current_state.has_legal_moves("W"):
                         (opp_value, opp_x, opp_py, p) = self.max(depth - 1, start_time, alpha, beta, new_parent)
@@ -454,7 +293,6 @@ class Game(object):
     def play(self):
         parent = self._game_tree.root
         while True:
-            #print(self._current_state)
             result, winner = self._current_state.is_end()
 
             if result:
@@ -504,8 +342,8 @@ class Game(object):
                             print(available_moves)
 
                             try:
-                                px = int(input("Unesite x koordinatu: "))
-                                py = int(input("Unesite y kooridinatu: "))
+                                px = int(input("Enter the x coordinate: "))
+                                py = int(input("Enter the y coordinate: "))
 
                                 if self._current_state.is_move_valid(px, py, "B"):
                                     self._current_state.set_value(px, py, "B")
@@ -514,12 +352,12 @@ class Game(object):
                                     self._player_turn = "W"
                                     break
                                 else:
-                                    print("Potez nije validan, pokusajte ponovo.")
+                                    print("Move not valid, try again.")
                             except:
-                                print("Unos nije ispravan, unesite neki od ponudjenih validnih poteza.")
+                                print("Input not valid, try entering some of the recommended legal moves.")
 
                         else:
-                            print("Nemate vise legalnih pokusaja, na redu je drugi igrac.")
+                            print("You have no legal moves left, it's other player's turn.")
                             self._player_turn = "W"
                             break
 
@@ -549,17 +387,17 @@ class Game(object):
                     #         print("Predlozi legalnih poteza: ", end="")
                     #         print(available_moves)
                     #
-                    #         px = int(input("Unesite x koordinatu: "))
-                    #         py = int(input("Unesite y kooridinatu: "))
+                    #         px = int(input("Enter the x coordinate: "))
+                    #         py = int(input("Enter the y coordinate: "))
                     #
                     #         if self._current_state.is_move_valid(px, py, "W"):
                     #             self._current_state.set_value(px, py, "W")
                     #             self._player_turn = "B"
                     #             break
                     #         else:
-                    #             print("Potez nije validan, pokusajte ponovo.")
+                    #             print("Move not valid, try again.")
                     #     else:
-                    #         print("Nemate vise legalnih pokusaja, na redu je drugi igrac.")
+                    #         print("You have no legal moves left, it's other player's turn.")
 
 
 
